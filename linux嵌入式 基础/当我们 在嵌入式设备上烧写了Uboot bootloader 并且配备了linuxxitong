@@ -1,0 +1,6 @@
+当我们 在嵌入式设备上烧写了Uboot bootloader 并且配备了linuxxitong
+那我们 剩下的就可以是 在我们的x86主机上进行交叉编译为我们的开发板 编译程序了
+
+在Mac投奔intel之前，可能有些开发平台是PowerPC的，但在Mac投奔intel之后，
+我想全世界的嵌入式开发人员使用的开发宿主机应该都是x86架构的吧，无论是intel的还是AMD的
+
