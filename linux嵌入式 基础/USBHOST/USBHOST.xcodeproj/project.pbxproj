@@ -1,0 +1,554 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EC9782502060B94F00358378 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC97824F2060B94F00358378 /* AppDelegate.m */; };
+		EC9782532060B94F00358378 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9782522060B94F00358378 /* ViewController.m */; };
+		EC9782552060B94F00358378 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC9782542060B94F00358378 /* Assets.xcassets */; };
+		EC9782582060B94F00358378 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC9782562060B94F00358378 /* Main.storyboard */; };
+		EC97825B2060B95000358378 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC97825A2060B95000358378 /* main.m */; };
+		EC9782662060B95000358378 /* USBHOSTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9782652060B95000358378 /* USBHOSTTests.m */; };
+		EC9782712060B95000358378 /* USBHOSTUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9782702060B95000358378 /* USBHOSTUITests.m */; };
+		EC9782802060BAEA00358378 /* USBHID.m in Sources */ = {isa = PBXBuildFile; fileRef = EC97827F2060BAEA00358378 /* USBHID.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EC9782622060B95000358378 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC9782432060B94E00358378 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC97824A2060B94E00358378;
+			remoteInfo = USBHOST;
+		};
+		EC97826D2060B95000358378 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC9782432060B94E00358378 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC97824A2060B94E00358378;
+			remoteInfo = USBHOST;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EC97824B2060B94E00358378 /* USBHOST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = USBHOST.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC97824E2060B94F00358378 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EC97824F2060B94F00358378 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EC9782512060B94F00358378 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EC9782522060B94F00358378 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EC9782542060B94F00358378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EC9782572060B94F00358378 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EC9782592060B94F00358378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC97825A2060B95000358378 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EC97825C2060B95000358378 /* USBHOST.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = USBHOST.entitlements; sourceTree = "<group>"; };
+		EC9782612060B95000358378 /* USBHOSTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = USBHOSTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC9782652060B95000358378 /* USBHOSTTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = USBHOSTTests.m; sourceTree = "<group>"; };
+		EC9782672060B95000358378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC97826C2060B95000358378 /* USBHOSTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = USBHOSTUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC9782702060B95000358378 /* USBHOSTUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = USBHOSTUITests.m; sourceTree = "<group>"; };
+		EC9782722060B95000358378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC97827E2060BAEA00358378 /* USBHID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = USBHID.h; sourceTree = "<group>"; };
+		EC97827F2060BAEA00358378 /* USBHID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = USBHID.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EC9782482060B94E00358378 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC97825E2060B95000358378 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC9782692060B95000358378 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EC9782422060B94E00358378 = {
+			isa = PBXGroup;
+			children = (
+				EC97824D2060B94E00358378 /* USBHOST */,
+				EC9782642060B95000358378 /* USBHOSTTests */,
+				EC97826F2060B95000358378 /* USBHOSTUITests */,
+				EC97824C2060B94E00358378 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EC97824C2060B94E00358378 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC97824B2060B94E00358378 /* USBHOST.app */,
+				EC9782612060B95000358378 /* USBHOSTTests.xctest */,
+				EC97826C2060B95000358378 /* USBHOSTUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EC97824D2060B94E00358378 /* USBHOST */ = {
+			isa = PBXGroup;
+			children = (
+				EC97824E2060B94F00358378 /* AppDelegate.h */,
+				EC97824F2060B94F00358378 /* AppDelegate.m */,
+				EC9782512060B94F00358378 /* ViewController.h */,
+				EC9782522060B94F00358378 /* ViewController.m */,
+				EC97827E2060BAEA00358378 /* USBHID.h */,
+				EC97827F2060BAEA00358378 /* USBHID.m */,
+				EC9782542060B94F00358378 /* Assets.xcassets */,
+				EC9782562060B94F00358378 /* Main.storyboard */,
+				EC9782592060B94F00358378 /* Info.plist */,
+				EC97825A2060B95000358378 /* main.m */,
+				EC97825C2060B95000358378 /* USBHOST.entitlements */,
+			);
+			path = USBHOST;
+			sourceTree = "<group>";
+		};
+		EC9782642060B95000358378 /* USBHOSTTests */ = {
+			isa = PBXGroup;
+			children = (
+				EC9782652060B95000358378 /* USBHOSTTests.m */,
+				EC9782672060B95000358378 /* Info.plist */,
+			);
+			path = USBHOSTTests;
+			sourceTree = "<group>";
+		};
+		EC97826F2060B95000358378 /* USBHOSTUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EC9782702060B95000358378 /* USBHOSTUITests.m */,
+				EC9782722060B95000358378 /* Info.plist */,
+			);
+			path = USBHOSTUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EC97824A2060B94E00358378 /* USBHOST */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC9782752060B95000358378 /* Build configuration list for PBXNativeTarget "USBHOST" */;
+			buildPhases = (
+				EC9782472060B94E00358378 /* Sources */,
+				EC9782482060B94E00358378 /* Frameworks */,
+				EC9782492060B94E00358378 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = USBHOST;
+			productName = USBHOST;
+			productReference = EC97824B2060B94E00358378 /* USBHOST.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EC9782602060B95000358378 /* USBHOSTTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC9782782060B95000358378 /* Build configuration list for PBXNativeTarget "USBHOSTTests" */;
+			buildPhases = (
+				EC97825D2060B95000358378 /* Sources */,
+				EC97825E2060B95000358378 /* Frameworks */,
+				EC97825F2060B95000358378 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC9782632060B95000358378 /* PBXTargetDependency */,
+			);
+			name = USBHOSTTests;
+			productName = USBHOSTTests;
+			productReference = EC9782612060B95000358378 /* USBHOSTTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EC97826B2060B95000358378 /* USBHOSTUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC97827B2060B95000358378 /* Build configuration list for PBXNativeTarget "USBHOSTUITests" */;
+			buildPhases = (
+				EC9782682060B95000358378 /* Sources */,
+				EC9782692060B95000358378 /* Frameworks */,
+				EC97826A2060B95000358378 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC97826E2060B95000358378 /* PBXTargetDependency */,
+			);
+			name = USBHOSTUITests;
+			productName = USBHOSTUITests;
+			productReference = EC97826C2060B95000358378 /* USBHOSTUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EC9782432060B94E00358378 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = admindyn;
+				TargetAttributes = {
+					EC97824A2060B94E00358378 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					EC9782602060B95000358378 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EC97824A2060B94E00358378;
+					};
+					EC97826B2060B95000358378 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EC97824A2060B94E00358378;
+					};
+				};
+			};
+			buildConfigurationList = EC9782462060B94E00358378 /* Build configuration list for PBXProject "USBHOST" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EC9782422060B94E00358378;
+			productRefGroup = EC97824C2060B94E00358378 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EC97824A2060B94E00358378 /* USBHOST */,
+				EC9782602060B95000358378 /* USBHOSTTests */,
+				EC97826B2060B95000358378 /* USBHOSTUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EC9782492060B94E00358378 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC9782552060B94F00358378 /* Assets.xcassets in Resources */,
+				EC9782582060B94F00358378 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC97825F2060B95000358378 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC97826A2060B95000358378 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EC9782472060B94E00358378 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC9782532060B94F00358378 /* ViewController.m in Sources */,
+				EC97825B2060B95000358378 /* main.m in Sources */,
+				EC9782802060BAEA00358378 /* USBHID.m in Sources */,
+				EC9782502060B94F00358378 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC97825D2060B95000358378 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC9782662060B95000358378 /* USBHOSTTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC9782682060B95000358378 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC9782712060B95000358378 /* USBHOSTUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EC9782632060B95000358378 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC97824A2060B94E00358378 /* USBHOST */;
+			targetProxy = EC9782622060B95000358378 /* PBXContainerItemProxy */;
+		};
+		EC97826E2060B95000358378 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC97824A2060B94E00358378 /* USBHOST */;
+			targetProxy = EC97826D2060B95000358378 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EC9782562060B94F00358378 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC9782572060B94F00358378 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EC9782732060B95000358378 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		EC9782742060B95000358378 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		EC9782762060B95000358378 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = USBHOST/USBHOST.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 58W4HKZ65K;
+				INFOPLIST_FILE = USBHOST/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bjcric1.com.USBHOST;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EC9782772060B95000358378 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = USBHOST/USBHOST.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 58W4HKZ65K;
+				INFOPLIST_FILE = USBHOST/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bjcric1.com.USBHOST;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EC9782792060B95000358378 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 58W4HKZ65K;
+				INFOPLIST_FILE = USBHOSTTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bjcric1.com.USBHOSTTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/USBHOST.app/Contents/MacOS/USBHOST";
+			};
+			name = Debug;
+		};
+		EC97827A2060B95000358378 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 58W4HKZ65K;
+				INFOPLIST_FILE = USBHOSTTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bjcric1.com.USBHOSTTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/USBHOST.app/Contents/MacOS/USBHOST";
+			};
+			name = Release;
+		};
+		EC97827C2060B95000358378 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 58W4HKZ65K;
+				INFOPLIST_FILE = USBHOSTUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bjcric1.com.USBHOSTUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = USBHOST;
+			};
+			name = Debug;
+		};
+		EC97827D2060B95000358378 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 58W4HKZ65K;
+				INFOPLIST_FILE = USBHOSTUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bjcric1.com.USBHOSTUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = USBHOST;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EC9782462060B94E00358378 /* Build configuration list for PBXProject "USBHOST" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC9782732060B95000358378 /* Debug */,
+				EC9782742060B95000358378 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC9782752060B95000358378 /* Build configuration list for PBXNativeTarget "USBHOST" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC9782762060B95000358378 /* Debug */,
+				EC9782772060B95000358378 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC9782782060B95000358378 /* Build configuration list for PBXNativeTarget "USBHOSTTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC9782792060B95000358378 /* Debug */,
+				EC97827A2060B95000358378 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC97827B2060B95000358378 /* Build configuration list for PBXNativeTarget "USBHOSTUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC97827C2060B95000358378 /* Debug */,
+				EC97827D2060B95000358378 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EC9782432060B94E00358378 /* Project object */;
+}

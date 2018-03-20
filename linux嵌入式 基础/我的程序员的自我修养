@@ -191,11 +191,35 @@ macserver:~ admindyn$
 安装后 我们并没有设置 java6 的环境变量 
 
 点击我们下载的驱动器 安装 竟然可以安装了
+‪
+
+Product Name:     CP210x Software Development Kit
+Install Folder:     "MCU" in the folder "SiliconLabs" on the disk "Macintosh HD"
+Alias Folder:     "Desktop" in the folder "admindyn" on the disk "Macintosh HD"
+Disk Space Information (for Installation Target):      Required: 318,639,172 Bytes
+
 看来 安装程序 自动寻找到了 系统下的java6 目录
 
 我们在Mac的 苹果标  关于  系统报告 下
 找到所有Mac 接的外设设备 设备安装驱动情况
 发现 我们当前的USB-UART转换设别驱动已经安装
+
+Mac 命令行 使用screen
+我们的mac 已经安装该命令  没有的用户 可以 使用 brew 安装该命令
+
+macserver:~ admindyn$ screen -ls
+There is a screen on:
+	5821.ttys000.macserver	(Detached)
+1 Socket in /var/folders/4l/txqq5wz92psbpzvj4wq9tnnm0000gq/T/.screen.
+
+macserver:~ admindyn$ screen -r 5821
+[screen is terminating]
+macserver:~ admindyn$ screen -ls
+No Sockets found in /var/folders/4l/txqq5wz92psbpzvj4wq9tnnm0000gq/T/.screen.
+
+macserver:~ admindyn$ 
+
+退出screen子进程 使用ctrl+d 快捷键退出 
 
 未完待续
 
