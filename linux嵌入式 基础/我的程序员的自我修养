@@ -204,6 +204,17 @@ Disk Space Information (for Installation Target):      Required: 318,639,172
 找到所有Mac 接的外设设备 设备安装驱动情况
 发现 我们当前的USB-UART转换设别驱动已经安装
 
+
+修正 虽然 下载之前的安装包 我们在Mac 的设备管理中找到了 我们的设备 但是 不能用 原来我们下载的是开发板的evaluation-kit 文档 甚至SDk 很大 150M 
+
+但是我们发现 真正的驱动文件 才 283KB
+
+我们应该在这里下载驱动 使用
+https://www.silabs.com/products/interface/usb-bridges/classic-usb-bridges/device.cp2109
+
+
+
+
 Mac 命令行 使用screen
 我们的mac 已经安装该命令  没有的用户 可以 使用 brew 安装该命令
 
