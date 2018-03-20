@@ -213,6 +213,21 @@ Disk Space Information (for Installation Target):      Required: 318,639,172
 https://www.silabs.com/products/interface/usb-bridges/classic-usb-bridges/device.cp2109
 
 
+安装对驱动后在 /dev
+
+目录下 也找到了我们的设备
+
+crw-rw-rw-   1 root      wheel            2,   0  3 20 16:42 tty
+crw-rw-rw-   1 root      wheel           20,   0  3 20 16:43 tty.Bluetooth-Incoming-Port
+crw-rw-rw-   1 root      wheel           20,   4  3 20 17:03 tty.SLAB_USBtoUART
+crw-rw-rw-   1 root      wheel           20,   2  3 20 16:43 tty.iPhone-WirelessiAP
+
+
+
+
+
+
+
 
 
 Mac 命令行 使用screen
