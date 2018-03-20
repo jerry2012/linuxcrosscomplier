@@ -88,7 +88,7 @@
 
 	第三 
 	操作系统文件 或者 固件文件（外设USB驱动，网卡驱动，lora射频驱动），还有操作系统的文件系统 存储设备 对应 我们PC端的硬盘 但是嵌入式设备考虑到运行效率 它的存储使用的是
-	flash闪存 即：NorFlash 与 NandFlash
+	flash闪存 即：NorFlash 与 NandFlash（NandFlash芯片 对应片内Nandfash控制器 NandFash GPIO引脚 ）
 
 	第四 运行内存RAM
 	设备上电 开始运行操作系统 运行我们的程序
@@ -110,12 +110,21 @@
 	我们要用开发板开发 就必然要和我们的PC或者Mac 连接
 	那么开发板必须提供接口
 
+	GPIO 通用外设输入输出引脚
+	协议类接口 
+	UART(片内UART控制器) pc 上有的com串口(我们使用UART转USB转换器);(数据传输 需要看UART协议)
+	I2C总线(片内I2C控制器)-I2C芯片设备 --设备地址
+	SPI插槽(片内SPI控制器)SPI芯片设备 --片选
+	LCD接口 LCD排线 协议
+
+	我们使用简单的UART串口
+
 	开发板提供UART接口 是一个 用于串口通信调试
 	我们常用UART口进行调试，但是UART的数据要传到电脑上分析就要匹配电脑的接口，通常我们电脑使用接口有COM口和USB口（最终在电脑上是一个虚拟的COM口），但是要想连上这两种接口都要需要进行硬件接口转换和电平转换。
 
-	UART有4个pin（VCC, GND, RX, TX）, 用的TTL电平,  低电平为0(0V)，高电平为1（3.3V或以上）。
+	UART有4个pin（VCC, GND, RX, TX）, 用的TTL（TTL针脚）电平,  低电平为0(0V)，高电平为1（3.3V或以上）。
 
-	COM口是我们台式机上面常用的口(下图)，9个pin， 用的RS232电平,  它是负逻辑电平，它定义+5~+12V为低电平，而-12~-5V为高电平（PC 主机箱 接显示器的口）
+	COM口是我们台式机上面常用的口(下图)，9个pin， 用的RS232电平（RS232 针脚）,  它是负逻辑电平，它定义+5~+12V为低电平，而-12~-5V为高电平（PC 主机箱 接显示器的口）
 
 	确保 1、开发板中有RS232接口，并且已连接到PC端
 	确保 2、Uboot中已经实现Ymodem协议的loady命令（一般默认 都会提供）
@@ -159,9 +168,34 @@
 
 
 
+我们的 USB转串口设备  芯片供应商silicon labs 网站
+https://www.silabs.com/products/development-tools/interface/cp2102ek-evaluation-kit
 
+寻找 在Mac上 为这款设备 找寻驱动
 
+但是 发现我们的mac 早已更新java环境 为8
 
+该驱动程序需要java6 
+
+https://support.apple.com/kb/DL1572?viewlocale=zh_CN&locale=en_US
+
+检查mac 原先 java版本
+
+/usr/bin/java
+macserver:~ admindyn$ java -version
+java version "1.8.0_111"
+Java(TM) SE Runtime Environment (build 1.8.0_111-b14)
+Java HotSpot(TM) 64-Bit Server VM (build 25.111-b14, mixed mode)
+macserver:~ admindyn$ 
+
+安装后 我们并没有设置 java6 的环境变量 
+
+点击我们下载的驱动器 安装 竟然可以安装了
+看来 安装程序 自动寻找到了 系统下的java6 目录
+
+我们在Mac的 苹果标  关于  系统报告 下
+找到所有Mac 接的外设设备 设备安装驱动情况
+发现 我们当前的USB-UART转换设别驱动已经安装
 
 未完待续
 
