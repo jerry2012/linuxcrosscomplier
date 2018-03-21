@@ -207,6 +207,8 @@ Disk Space Information (for Installation Target):      Required: 318,639,172
 
 修正 虽然 下载之前的安装包 我们在Mac 的设备管理中找到了 我们的设备 但是 不能用 原来我们下载的是开发板的evaluation-kit 文档 甚至SDk 很大 150M 
 
+证明 就是SDK 我们安装是  可以指定SDK的安装目录路径
+
 但是我们发现 真正的驱动文件 才 283KB
 
 我们应该在这里下载驱动 使用

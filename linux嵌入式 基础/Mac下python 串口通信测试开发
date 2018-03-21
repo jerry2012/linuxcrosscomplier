@@ -1,0 +1,53 @@
+python 串口通信测试
+
+先安装 serial 库
+
+macserver:Desktop admindyn$ pip3 install serial
+Collecting serial
+  Downloading serial-0.0.51-py2.py3-none-any.whl
+Collecting future>=0.16.0 (from serial)
+  Downloading future-0.16.0.tar.gz (824kB)
+    100% |████████████████████████████████| 829kB 98kB/s 
+Collecting pyyaml>=3.12 (from serial)
+  Downloading PyYAML-3.12.tar.gz (253kB)
+    100% |████████████████████████████████| 256kB 102kB/s 
+Collecting iso8601>=0.1.12 (from serial)
+  Downloading iso8601-0.1.12-py3-none-any.whl
+Installing collected packages: future, pyyaml, iso8601, serial
+  Running setup.py install for future ... done
+  Running setup.py install for pyyaml ... done
+Successfully installed future-0.16.0 iso8601-0.1.12 pyyaml-3.12 serial-0.0.51
+You are using pip version 9.0.1, however version 9.0.2 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+macserver:Desktop admindyn$ 
+
+
+threading 已经安装
+
+
+macserver:Desktop admindyn$ pip3 install threading
+Collecting threading
+  Could not find a version that satisfies the requirement threading (from versions: )
+No matching distribution found for threading
+You are using pip version 9.0.1, however version 9.0.2 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+
+
+time 库 已经安装
+
+macserver:Desktop admindyn$ pip3 install time
+Collecting time
+  Could not find a version that satisfies the requirement time (from versions: )
+No matching distribution found for time
+You are using pip version 9.0.1, however version 9.0.2 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+macserver:Desktop admindyn$ 
+
+
+
+具体使用 Serial 开发 串口 需要查看 使用文档
+但是在Python3 下 进行开发 资料太少 就搁置了 使用
+Mac下的 OC 进行开发 找到了 很好的方法
+
+
+
