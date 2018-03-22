@@ -1,0 +1,5 @@
+各种链路层的数据包监听socket 建立
+
+不止是AF_INET 
+
+http://blog.csdn.net/ttyttytty12/article/details/8141910
