@@ -1,0 +1,274 @@
+嵌入式交叉编译环境
+
+第一 使用 minicom
+	macserver:dev admindyn$ which minicom
+	/usr/local/bin/minicom
+	macserver:dev admindyn$ 
+
+	串口 通讯（开发板已经被第三方公司嵌入linux）
+
++-----[configuration]------+                             
+            | Filenames and paths      |                             
+            | File transfer protocols  |                             
+            | Serial port setup        |                             
+            | Modem and dialing        |                             
+            | Screen and keyboard      |                             
+            | Save setup as dfl        |                             
+            | Save setup as..          |                             
+            | Exit                     |                             
+            | Exit from Minicom        |                             
+            +--------------------------+ 
+
+
+第一 进入 SerialPortSetup 设置我们要通讯的串口设备
+第二 进入 Screen and keyboard  设置 我们 习惯使用的快捷键组合
+
+上面 修改完毕后一定要 Save setup as dfl 保存配置 然后 重新进入终端
+使用 minicom -s
+
+
+第二 安装tftp
+	The fastest way to use U-Boot to load a Linux kernel or an application image is file transfer over Ethernet. For this purpose, U-Boot implements the TFTP protocol (see the tftpboot command in U-Boot).
+
+	macserver:dev admindyn$ which tftp
+	/usr/bin/tftp
+	macserver:dev admindyn$ 
+
+	首先在宿主机上开启tftp服务器端服务，设置好tftp的根目录内容（也就是供客户端下载的文件），然后，在目标板上开启 tftp 的客户端程序（tftp 客户端主要在 Bootloader 交互环境下运行，几乎所有Bootloader都提供该服务，用于下载操作系统内核和文件系统）。这样，把目标板和宿主机用直连线相连之后，就可以通过tftp协议传输可执行文件
+
+	用户就可以把所需的传输文件放到“/tftpboot”目录下，这样，主机上的tftp服务就建立起来。用网络交叉线把目标板和宿主机连起来，并且将其配置成一个网段的地址，再在目标板上启动tftp客户端程序（注意：不同的Bootloader所使用的命令会有所不同，读者可以查看帮助来获得确切的命令名及格式，本书以U-Boot为例讲解）
+
+第三 NFS文件系统
+
+	NFS的使用分为服务器端和客户端，其中服务器端提供要共享的文件，而客户端则通过挂载“mount”来实现对共享文件的访问操作。在嵌入式开发中，通常NFS服务端在宿主机上运行，而客户端在目标板上运行。
+	NFS服务器端是通过读入它的配置文件“/etc/exports”来决定所共享的文件目录的，在这个配置文件中，每一行都代表一项要共享的文件目录，以及所指定的客户端对其的操作权限。客户端可以根据相应的权限，对该目录下的所有目录文件进行访问
+
+
+第四 找到U-boot 因为它可以适配的硬件范围广
+
+http://sourceforge.net/project/U-Boot
+
+
+###########################
+
+Some tools are needed to install and configure U-Boot and Linux on the target system. Also, especially during development, you will want to be able to interact with the target system. This section describes how to configure your host system for this purpose.
+
+在开始与我们的开发板通讯开发前
+我们的Mac主机端需要 几个命令软件
+cu  kermit  minicom
+macserver:~ admindyn$ which cu
+/usr/bin/cu
+macserver:~ admindyn$ which kermit
+
+
+
+######## BootLoader #########
+开始移植U-Boot之前，要先熟悉硬件电路板和处理器，确认U-Boot是否已经支持新开发板的处理器和I/O设备。假如U-Boot已经支持一块非常相似的电路板，那么移植的过程将非常简单。移植U-Boot工作就是添加开发板硬件相关的文件、配置选项，然后配置编译。开始移植之前，需要先分析一下U-Boot已经支持的开发板，比较出硬件配置最接近的开发板。选择的原则是，首先处理器相同，其次处理器体系结构相同，然后是以太网接口等外围接口相同。还要验证一下这个参考开发板的U-Boot，至少能够配置编译通过。
+
+
+
+编译U-Boot。执行make命令，编译成功可以得到U-Boot映像
+
+在能够编译通过的基础上，还要实现U-Boot的以太网接口、Flash擦写等功能。FS4412开发板的以太网驱动和Exynos 4412类似，所以可以直接使用，但需修改
+
+对于Flash的选择就麻烦多了，Flash芯片价格或者采购方面的因素都有影响。多数开发板大小、型号都不相同，所以还需要移植 Flash 的驱动。每种开发板目录下一般都有flash.c文件，需要根据具体的Flash类型修改
+
+调试U-Boot源代码，直到U-Boot在开发板上能够正常启动。调试的过程是很艰难的，需要借助工具，并且有些问题可能会困扰很长时间。
+
+
+
+###########linux内核####################
+
+
+linux 内核编译 配置
+
+1.1 下载内核源码。
+
+	从http://www.kernel.org/下载Linux-3.14内核（或者更高的版本）至/source/kernel目录。解开压缩包，并进入内核源码目录，
+
+1.2	修改内核目录树根下的Makefile，指明交叉编译器：
+	ARCH ?= arm
+	CROSS_COMPILE = arm-none-linux-gnueabi-
+
+1.3	复制标准板配置文件：
+	cp arch/arm/configs/exynos_defconfig .config
+	
+1.4	输入内核配置命令进行内核支持功能选项的选择
+
+	make menuconfig
+
+	在编译内核的过程中，最麻烦的事情就是配置。初次接触Linux 内核的开发者往往弄不清楚该如何选取这些选项。实际上，在配置时，大部分选项可以使用其默认值，只有小部分需要根据用户不同的需要选择。选择的原则是将与内核其他部分关系较远且不经常使用的部分功能代码编译成为可加载模块，这有利于减小内核的长度，减少内核消耗的内存，简化该功能相应的环境改变时对内核的影响；不需要的功能就不要选；与内核关系紧密而且经常使用的部分功能代码直接编译到内核中。
+
+1.5 生成设备树
+
+	Device Tree 是一种用来描述硬件的数据结构，类似板级描述语言，起源于OpenFirmware（OF），目前广泛使用于Linux kernel 2.6.x版本中。
+
+	生成设备树文件，以参考板origen的设备数文件为参考。
+
+
+	cp arch/arm/boot/dts/exynos4412-origen.dts arch/arm/boot/dts/exynos4412-fs4412.dts
+
+	修改Makefile 用来编译新添加的文件
+
+	vim arch/arm/boot/dts/Makefile
+
+	在 exynos4412-origen.dtb \ 下 添加exynos4412-fs4412.dtb \ 
+
+	编译设备树文件
+
+	make dtbs
+
+1.6  执行下面的命令 开始编译内核
+
+	make uImage
+
+	如果按照默认的配置，没有改动的话，编译后系统会在arch/arm/boot目录下生成一个zImage文件，我们需要把它加载到开发板中运行，加以验证。
+
+1.7	加载到开发板的方式是通过U-Boot提供的网络功能，把它直接下载到开发板的	  内存中。首先把内核复制到tftp服务器的根目录下（见tftp配置文件说明）。
+	在我们的实验中，这个目录在/tftpboot 下，所以需要复制内核和设备树文件到/tftpboot 目录下
+
+	cp arch/arm/boot/uImage /tftpboot
+	cp arch/arm/boot/dts/exynos4412-fs4412.dtb /tftpboot
+
+
+	启动开发板，修改uboot 环境变量：
+
+	setenv  serverip 192.168.9.120
+	setenv ipaddr 192.168.9.223
+	setenv bootcmd tftp 41000000 uImage\;tftp 42000000 exynos4412-fs4412.dtb\;bootm 41000000-42000000
+	setenv bootargs root=/dev/nfs nfsroot=192.168.9.120:/source/rootfs rwconsole=ttySAC2,115200 init=/linuxrc ip=192.168.9.233
+	saveenv
+
+	此时可以在putty终端中观察到内核的启动现象，不过内核在此时还不会成功启动，因为还需要做一些其他的移植工作。
+
+内核移植
+	在内核已经支持origen处理器以后，基本上无须改动代码就可以让内核运行起来。但是，有些情况下，我们必须针对不同的设备进行驱动级的移植，至少硬件地址和中断号可能会不同。例如，有时需要移植网络芯片和Nand Flash芯片等外设的驱动程序。
+
+
+##########文件系统############
+
+文件系统
+
+	Linux 操作系统都是基于文件概念的，文件是以字符序列构成的信息载体。据此，可以把 I/O 设备当作文件来处理。因此，与磁盘上的普通文件进行交互所用的同一系统调用可以直接用于I/O设备。这样大大简化了系统对不同设备的处理，提高了效率。Linux目前支持7种文件类型：普通文件、目录文件、链接文件、块设备文件、字符设备文件、管道文件、套接字文件。
+
+	那么，内核如何区分和引用特定的文件呢？这里用到了一个重要的概念——文件描述符。对于Linux 而言，所有对设备和文件的操作都是使用文件描述符来进行的。文件描述符是一个非负的整数，它是一个索引值，并指向在内核中每个进程打开文件的记录表。当打开一个现存文件或创建一个新文件时，内核就向进程返回一个文件描述符；当需要读写文件时，也需要把文件描述符作为参数传递给相应的函数
+
+
+用busybox 构建开发板的cramfs文件系统
+
+4.1 从busybox网站下载busybox源码（本实例采用busybox-1.22.1.tar.bz2）并解压，接下来，根据实际需要进行busybox的配置
+	make menuconfig
+
+	此时，需要设置与平台相关的交叉编译选项，操作步骤为：先选中“Build Options”项的“Do you want to build BusyBox with a Cross Complier？”选项，然后将“Cross Compiler prefix”设置为“/usr/local/arm/3.3.2/bin/arm-linux-”
+
+4.2 编译并安装busybox。
+	make
+	make install PREFIX=/home/linux/FS4112/cramfs
+
+	其中，PREFIX 用于指定安装目录，如果不设置该选项，则默认在当前目录下创建_install目录。创建的安装目录的内容如下：
+	ls
+	bin linuxrc sbin usr
+
+4.3  由此可知，使用busybox软件包所创建的文件系统还缺少很多东西。（4）通过创建系统所需的目录和文件来完善文件系统的内容
+
+	mkdir mnt root var tmp proc boot etc lib
+	mkdir /var/{lock,log,mail,run,spool}
+
+4.4 
+	将所需的交叉编译链接库复制到 lib 目录中，这些库文件位于/usr/local/arm/3.3.2/lib 下。在复制时应该注意采用打包后解包的方式，以保证符号链接的正确性和完整性。删除所有目录和静态库文件，并使用arm-linux-strip工具剥除库文件中的调试段信息，从而减少库的体积。
+
+4.5 创建一些重要文件。
+	4.5.1 创建inittab 它是Linux启动之后第一个被访问的脚本文件
+	#This is run first except when booting
+	::sysyinit:/etc/init.d/rcS
+
+	#Start an "askfirst" shell on the console
+	#::askfirst:/bin/bash
+	::askfirst:/bin/bash
+
+	#Stuff to do when restarting the init process
+	::restart:/sbin/init
+
+	#::once:/sbin/raja.sh
+	#::respawn:/sbin/iom
+	::once:/usr/etc/rc.local
+
+	#Stuff to do before rebooting
+	::ctrlaltdel:/sbin/reboot
+	::shutdown:/bin/umount -a -r 
+
+
+	4.5.2 建立init.d目录，进入init.d目录，建立rcS文件
+	#!/bin/sh
+	#This is the first script called by init process
+	/bin/mount -a
+	exec /usr/etc/rc.local
+
+	4.5.3 建立/etc/profile文件
+		其中，profile用于设置shell的环境变量，shell启动时会读取/etc/profile文件来设置环境变量。
+
+	#/etc/profile
+	PATH=/bin:/sbin:/usr/bin:/usr/sbin
+	LD_LIBRARY_PATH=/lib:/usr/lib:$LD_LIBRARY_PATH
+	export PATH LD_LIBRARY_PATH
+
+	4.5.4 建立/etc/rc.local文件：
+	#!/bin/sh
+	#add user specified script
+	cd /dev
+	/*
+	创建软连接 在执行ln命令之前，目录/dev中不存在tty0文件。执行ln之后，在/dev目录中才有tty0文件这一项，表明tty0文件和vc/0链接起来（注意，二者在物理上是同一文件）
+	*/
+	ln -s /dev/fb/0 fb0
+	ln -s vc/0 tty0
+	ln -s vc/1 tty1
+	ln -s vc/2 tty2
+	mknod -m 660 mtd0 c 90 0
+	mknod -m 660 mtd1 c 90 2
+	mknod -m 660 mtd2 c 90 4
+	mknod -m 660 mtdblock0 b 31 0
+	mknod -m 660 mtdblock1 b 31 1
+	mknod -m 660 mtdblock2 b 31 2
+	4.5.5 建立 fstab文件
+		该文件 定义了文件系统的各个“挂接点”，需要与实际的系统相配合
+
+	4.5.6 创建用户和用户组文件等其他文件
+
+4.6 创建 cramfs 文件系统映像文件
+	下面创建 cramfs 文件系统映像文件，制作 cramfs 映像文件需要用到的工具是mkcramfs。此时可以采用两种方法，一种方法是使用我们所构建的文件系统（在目录“/home/david/FS4412/cramfs”中），另一种方法是在已经做好的 cramfs 映像文件的基础上进行适当的改动。下面的示例使用第二种方法，因为这个方法包含了第一种方法的所有步骤（假设已经做好的映像文件名为“FS4412.cramfs”）
+
+	首先用mount命令将映像文件挂载到一个目录下，打开该目录并查看其内容
+
+	mkdir cramfs
+	mount FS4412.cramgs cramfs -o loop
+	ls cramfs
+	bin dev etc home lib liunxrc proc Qtopia ramdisk sbin testshell tmp usr var 
+
+	因为cramfs文件系统是只读的，所以不能在这个挂载目录下直接进行修改，因此需要将文件系统中的内容复制到另一个目录中，具体操作如下：
+
+	mkdir backup_cramfs
+	// 压缩之前的文件系统目录 compress
+	tar cvf backup.cramfs.tar cramfs/
+	//将压缩包 移动到刚才创建的目录
+	mv backup.cramfs.tar backup_cramfs/
+	//撤销挂载
+	umount cramfs
+	cd backup_cramfs
+	//到我们的新目标目录下  解压缩
+	tar xvf backup.cramfs.tar
+	rm backup.cramfs.tar
+
+	此时就像用busybox所构建的文件系统一样，可以在backup_cramfs的cramfs子目录中任意进行修改。例如，可以添加用户自己的程序：
+
+	cp ~/hello backup_cramfs/cramfs
+
+	在用户的修改工作结束之后，用下面的命令可以创建cramfs映像文件：
+
+	mkcramfs backup_cramfs/cramfs/ new.cramfs
+
+
+4.7 cramfs映像文件烧入到开发板
+
+	接下来，就可以将新创建的new.cramfs映像文件烧入到开发板的相应位置了。 
+
+
