@@ -63,6 +63,49 @@ macserver:~ admindyn$ which kermit
 
 
 ######## BootLoader #########
+重新U-boot 前 这些数据 必须知道 板子的Mac地址 和
+All arches boards use a serial number for identification purposes. Also, all boards have at least one ethernet (MAC) address assigned
+
+检查 是否安装mkimage
+macserver:~ admindyn$ which mkimage
+macserver:~ admindyn$ 
+
+重新U-boot 需要串口工具
+
+To initialize the U-Boot firmware running on your arches board, you have to connect a terminal to the board's serial console port.
+
+The default configuration of the console port on the arches board uses a baudrate of 115200/8N1 (115200 bps, 8 Bit per character, no parity, 1 stop bit, no handshake).
+
+我们买的开发板如果做过U-boot可以跳过
+ If you bought your arches board with U-Boot already installed, you can skip this section since the manufacturer probably has already performed these steps.
+
+ 我们讨论没有安装U-boot的
+At first you have to enter the serial number and the ethernet address of your board. Pay special attention here since these parameters are write protected and cannot be changed once saved (usually this is done by the manufacturer of the board). To enter the data you have to use the U-Boot command setenv, followed by the variable name and the data, all separated by white space (blank and/or TAB characters). Use the variable name serial# for the board ID and/or serial number, and ethaddr for the ethernet address, for instance:
+
+=> setenv ethaddr !!!!!!FILL_THIS!!!!!!
+=> setenv serial# 706B-C029-373
+Use the printenv command to verify that you have entered the correct values:
+
+=> printenv serial# ethaddr
+## Error: "serial#" not defined
+ethaddr=00:11:22:33:55:00
+=>
+
+Please double check that the printed values are correct! You will not be able to correct any errors later! If there is something wrong, reset the board and restart from the beginning; otherwise you can store the parameters permanently using the saveenv command:
+
+=> saveenv
+Saving Environment to Flash...
+Un-Protected 1 sectors
+Un-Protected 1 sectors
+Erasing Flash...
+. done
+Erased 1 sectors
+Writing to Flash... done
+Protected 1 sectors
+Protected 1 sectors
+=>
+
+
 开始移植U-Boot之前，要先熟悉硬件电路板和处理器，确认U-Boot是否已经支持新开发板的处理器和I/O设备。假如U-Boot已经支持一块非常相似的电路板，那么移植的过程将非常简单。移植U-Boot工作就是添加开发板硬件相关的文件、配置选项，然后配置编译。开始移植之前，需要先分析一下U-Boot已经支持的开发板，比较出硬件配置最接近的开发板。选择的原则是，首先处理器相同，其次处理器体系结构相同，然后是以太网接口等外围接口相同。还要验证一下这个参考开发板的U-Boot，至少能够配置编译通过。
 
 
